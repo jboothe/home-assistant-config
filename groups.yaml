@@ -1,0 +1,48 @@
+
+#------------------------------
+# VIEWS 
+#------------------------------
+
+default_view:
+  view: true
+  icon: mdi:home
+  entities:
+    - group.livingroom
+    - group.hallway
+    - group.mancave
+    - group.ring
+
+#------------------------------
+# GROUPS
+#------------------------------
+
+hallway:
+  name: Hallway
+  entities:
+    - light.sengled_bulb_005
+    - light.sengled_bulb_006
+
+livingroom:
+  name: Living Room
+  entities:
+    - light.sengled_bulb_003
+    - light.sengled_bulb_004
+
+mancave:
+  name: Man Cave
+  entities:
+    - light.sengled_bulb_001
+    - light.sengled_bulb_002
+    - light.sengled_bulb_007
+
+
+ring:
+  name: Ring Doorbell Sensors
+  entities:
+    - sensor.ring_front_door_last_activity
+    - sensor.ring_front_door_last_ding
+    - sensor.ring_front_door_last_motion
+    - sensor.ring_front_door_volume
+    - sensor.ring_front_door_battery
+    - sensor.ring_front_door_wifi_signal_category
+    - sensor.ring_front_door_wifi_signal_strength
