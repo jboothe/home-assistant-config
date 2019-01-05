@@ -1,0 +1,29 @@
+# 10.0.0.101
+- platform: mqtt
+  name: "Switch 1"
+  command_topic: "cmnd/sonoff01/power"
+  state_topic: "stat/sonoff01/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true
+
+# 10.0.0.102
+- platform: mqtt
+  name: "Switch 2"
+  command_topic: "cmnd/sonoff02/power"
+  state_topic: "stat/sonoff02/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true
+
+# 10.0.0.103
+- platform: mqtt
+  name: "Switch 3"
+  command_topic: "cmnd/sonoff03/power"
+  state_topic: "stat/sonoff03/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true
