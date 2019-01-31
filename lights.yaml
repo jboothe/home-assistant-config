@@ -1,0 +1,109 @@
+## MOES Dimmer Light
+##
+- platform: mqtt
+  name: "dimmer01"
+  state_topic: "stat/dimmer01/POWER"
+  command_topic: "cmnd/dimmer01/POWER"
+  availability_topic: "tele/dimmer01/LWT"
+  brightness_state_topic: "stat/dimmer01/RESULT"
+  brightness_command_topic: "cmnd/dimmer01/Dimmer"
+  brightness_scale: 100
+  brightness_value_template: >
+    {% if value_json.Dimmer is defined %}
+      {{ value_json.Dimmer }}
+    {% else %}
+      {% if state_attr('light.dimmer01','brightness') == none %}
+        0
+      {% else %}
+        {{ state_attr('light.dimmer01','brightness') / 255 * 100 }}
+      {% endif %}
+    {% endif %}
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false
+
+## This is for the Magic Home LED strip 
+## only supports one color per strip
+- platform: flux_led
+  devices:
+    10.0.0.19:
+      name: flux_strip1
+
+##This version of the holiday lights code does not require the node red portion
+##The "W" slider under the main "holiday LED" light modifies each effect
+##The "W" slider under "Glitter" light modifies the frequency of glitter, the RGB selection changes the color of the glitter
+##The "W" slider under "Lightning" switch modifies the frequency of lightning.
+
+- platform: mqtt
+  name: "KitCave Lights"
+  command_topic: "KitCaveLEDs/power"
+  state_topic: "KitCaveLEDs/powerState"
+  brightness_command_topic: "KitCaveLEDs/brightness"
+  brightness_state_topic: "KitCaveLEDs/brightnessState"
+  brightness_scale: 255
+  white_value_command_topic: "KitCaveLEDs/modifier"
+  white_value_state_topic: "KitCaveLEDs/modifierState"
+  white_value_scale: 500
+  effect_command_topic: "KitCaveLEDs/effect"
+  effect_state_topic: "KitCaveLEDs/effectState"
+  effect_list:
+    - Color_Chase
+    - Color_Glitter
+    - Single_Race
+    - Double_Crash
+    - Rainbow
+    - Blocked_Colors
+    - BPM
+    - Twinkle
+    - Fire
+    - Fill_Solid
+    - Spooky_Eyes
+    - LED_Locator
+  retain: true
+- platform: mqtt
+  name: "Color 1"
+  command_topic: "KitCaveLEDs/ColorPower"
+  state_topic: "KitCaveLEDs/powerState"
+  rgb_command_topic: "KitCaveLEDs/color1"
+  rgb_state_topic: "KitCaveLEDs/color1State"
+  retain: true
+- platform: mqtt
+  name: "Color 2"
+  command_topic: "KitCaveLEDs/ColorPower"
+  state_topic: "KitCaveLEDs/powerState"
+  rgb_command_topic: "KitCaveLEDs/color2"
+  rgb_state_topic: "KitCaveLEDs/color2State"
+  retain: true
+- platform: mqtt
+  name: "Color 3"
+  command_topic: "KitCaveLEDs/ColorPower"
+  state_topic: "KitCaveLEDs/powerState"
+  rgb_command_topic: "KitCaveLEDs/color3"
+  rgb_state_topic: "KitCaveLEDs/color3State"
+  retain: true
+- platform: mqtt
+  name: "Glitter"
+  state_topic: "KitCaveLEDs/glitter/state"
+  command_topic: "KitCaveLEDs/addEffects"
+  payload_on: "Glitter On"
+  payload_off: "Glitter Off"
+  rgb_command_topic: "KitCaveLEDs/glitterColor"
+  rgb_state_topic: "KitCaveLEDs/glitterColorState"
+  white_value_command_topic: "KitCaveLEDs/glitterChance"
+  white_value_state_topic: "KitCaveLEDs/glitterChanceState"
+  white_value_scale: 255
+  retain: true
+- platform: mqtt
+  name: "Lightning"
+  state_topic: "KitCaveLEDs/lightning/state"
+  command_topic: "KitCaveLEDs/addEffects"
+  payload_on: "Lightning On"
+  payload_off: "Lightning Off"
+  white_value_command_topic: "KitCaveLEDs/lightningChance"
+  white_value_state_topic: "KitCaveLEDs/lightningChanceState"
+  white_value_scale: 500
+  retain: true
+

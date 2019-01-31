@@ -58,11 +58,11 @@ map:
 sun:
 
 # Sensors
-sensor:
+# sensor:
   # Weather prediction
-  - platform: yr
+  # - platform: yr
   # Ring Doorbell sensor
-  - platform: ring
+  # - platform: ring
   
 # Text to speech
 tts:
@@ -75,6 +75,8 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 switch: !include switches.yaml
+light: !include lights.yaml
+sensor: !include sensors.yaml
 
 
 panel_iframe:
@@ -94,25 +96,25 @@ zha:
   database_path: /config/zigbee.db
   
   
-light:
-  - platform: group
-    name: Hallway Lights
-    entities:
-      - light.sengled_bulb_005
-      - light.sengled_bulb_006
+# light:
+#   - platform: group
+#     name: Hallway Lights
+#     entities:
+#       - light.sengled_bulb_005
+#       - light.sengled_bulb_006
   
-  - platform: group
-    name: Living Room Lights
-    entities:
-      - light.sengled_bulb_003
-      - light.sengled_bulb_004
+#   - platform: group
+#     name: Living Room Lights
+#     entities:
+#       - light.sengled_bulb_003
+#       - light.sengled_bulb_004
       
-  - platform: group
-    name: Man Cave Lights
-    entities:
-      - light.sengled_bulb_001
-      - light.sengled_bulb_002
-      - light.sengled_bulb_007
+#   - platform: group
+#     name: Man Cave Lights
+#     entities:
+#       - light.sengled_bulb_001
+#       - light.sengled_bulb_002
+#       - light.sengled_bulb_007
       
 #------------------------------
 # Ring Doorbell Configuration

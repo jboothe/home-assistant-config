@@ -1,0 +1,9 @@
+# Kitchen ManCave LED Lights
+- platform: mqtt
+  name: "Current LED"
+  state_topic: "KitCaveLEDs/locator"
+
+# Weather prediction
+- platform: yr
+# Ring Doorbell sensor
+- platform: ring

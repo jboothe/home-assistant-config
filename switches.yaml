@@ -27,3 +27,13 @@
   payload_on: "ON"
   payload_off: "OFF"
   retain: true
+
+# 10.0.0.104
+- platform: mqtt
+  name: "Switch 4"
+  command_topic: "cmnd/sonoff04/power"
+  state_topic: "stat/sonoff04/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true

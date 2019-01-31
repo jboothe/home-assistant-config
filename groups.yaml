@@ -13,10 +13,24 @@ default_view:
     - group.mancave
     - group.switches
     - group.ring
+    - group.houseLights
 
 #------------------------------
 # GROUPS
 #------------------------------
+
+
+houseLights:
+  name: Kit Cave Lights
+  control: hidden
+  entities:    
+    - light.kitcave_lights
+    - light.color_1
+    - light.color_2
+    - light.color_3
+    - light.glitter
+    - light.lightning
+    - sensor.current_led
 
 hallway:
   name: Hallway
@@ -28,6 +42,8 @@ office:
   name: Office
   entities:
     - light.sengled_bulb_008
+    - light.flux_strip1
+    - light.dimmer01
 
 livingroom:
   name: Living Room
@@ -48,6 +64,7 @@ switches:
     - switch.switch_1
     - switch.switch_2
     - switch.switch_3
+    - switch.switch_4
 
 ring:
   name: Ring Doorbell Sensors
@@ -59,3 +76,5 @@ ring:
     - sensor.ring_front_door_battery
     - sensor.ring_front_door_wifi_signal_category
     - sensor.ring_front_door_wifi_signal_strength
+
+
